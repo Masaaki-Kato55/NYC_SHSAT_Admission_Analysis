@@ -19,3 +19,6 @@ The columns represent:
 - U: School size (Number of students in the entire school)
 - V: Average student achievement on a state-wide standardized test
 - W-X: Proportion of students exceeding state-wide expectations in reading and math
+
+
+The analysis of this project is in the analysis.md file
