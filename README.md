@@ -26,7 +26,7 @@ Questions:
 1.  What is the correlation between the number of applications and admissions to HSPHS?
 2.  What is a better predictor of admission to HSPHS? Raw number of applications or
 application *rate*?
-- 3 Which school has the best *per student* odds of sending someone to HSPHS?
+3) Which school has the best *per student* odds of sending someone to HSPHS?
 4) Is there a relationship between how students perceive their school (as reported in columns
 L-Q) and how the school performs on objective measures of achievement (as noted in
 columns V-X).
