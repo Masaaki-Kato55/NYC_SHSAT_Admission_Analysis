@@ -1,5 +1,9 @@
 # NYC_SHSAT_Admission_Analysis
 
+## Work
+- The code for this project can be found in `analysis.py`
+- THe report for this project can be found in `analysis_report.pdf`
+
 ## Description:
 In NYC, there are 8 highly selective public high schools (HSPHS). The admission of these schools are based on scoring sufficiently on a single test, Specialized High Schools Admissision Test (SHSAT). 
 The goal of this project to explore various characteristics of NYC middle schools and determine which factors impact HSPHS admissions. 
@@ -22,7 +26,6 @@ The columns represent:
 
 
 ## Questions
-Questions:
 1.  What is the correlation between the number of applications and admissions to HSPHS?
 2.  What is a better predictor of admission to HSPHS? Raw number of applications or
 application *rate*?
