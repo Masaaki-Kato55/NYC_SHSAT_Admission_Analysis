@@ -1,4 +1,4 @@
-# NYC_SHSAT_Admission_Analysis
+# NYC SHSAT Admission Analysis
 
 ## Work
 - The code for this project can be found in `analysis.py`
