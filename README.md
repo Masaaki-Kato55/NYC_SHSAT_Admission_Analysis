@@ -5,9 +5,9 @@
 - THe report for this project can be found in `analysis_report.pdf`
 
 ## Description:
-In NYC, there are 8 highly selective public high schools (HSPHS). The admission of these schools are based on scoring sufficiently on a single test known as the Specialized High Schools Admissision Test (SHSAT). 
-The goal of this project to explore various characteristics of NYC middle schools, determine which factors impact HSPHS admissions, and propose possible interventions. 
-This is a modified version of  the Introduction to Data Science Capstone Project.
+- In NYC, there are 8 highly selective public high schools (HSPHS). The admission of these schools are based on scoring sufficiently on a single test known as the Specialized High Schools Admissision Test (SHSAT). 
+- The goal of this project to explore various characteristics of NYC middle schools, determine which factors impact HSPHS admissions, and propose possible interventions. 
+- This is a modified version of the Introduction to Data Science Capstone Project. A detailed explanation of the methodology is in the `analysis_report.pdf` file
 
 ## Dataset:
 The dataset (`middleSchoolData.csv`) contains data from all 594 NYC middle schools (485 public schoools and 109 charter schools) from a randomly picked year in the past 5 years. Each row represent a single school.  
@@ -37,10 +37,35 @@ The columns represent:
 ## Methods/Results:
 
 ### Effect of Student Perception of School:
-- I used a multiple linear regression model to predict HSPHS acceptances and objective achievement metrics. However, before the model, I conducted a PCA to reduce the number of factors. The PCA included all factors except for the two outcomes, which resulted in 18 factors. 
-- Based on the Kaiser criterion, I choose four factors and based on the loading values, I labeled them as positive school climate, large population, improvised communities, and financial stability. Then, I used a multiple regression model with these principal components as predictors and ran two models, one with the HSPHS acceptances (column D) as the outcome and another with the average student achievement scores (column V) as the outcome.
+- To begin, I conducted a PCA, which included all factors except for the two outcomes (HSPHS acceptances, objective achievement scores). Based on the PCA results, I chose four factors and labeled them as positive school climate, large population, improvised communities, and financial stability.
+- Then, I used a multiple regression model with these principal components as predictors and ran two models, one with the HSPHS acceptances (column D) as the outcome and another with the average student achievement scores (column V) as the outcome.
+- The results showed positive school climate as the most significant factor in prediction acceptances and objective achievement scores
 
+#### Regression Results:
 
+|                                | Regression 1 (acceptances) | Regression 2 (achievements) |
+|--------------------------------|----------------------------|-----------------------------|
+| PCA1 (positive school climate) | 0.25                       | 0.20                        |
+| PCA2 (large population)        | 0.17                       | -0.10                       |
+| PCA3 (improvised communities)  | 0.04                       | 0.06                        |
+| PCA4 (financial stability)     | -0.08                      | 0.09                        |
+| R^2                            | 0.45                       | 0.25                        |
+
+### Effect of School Size:
+- Number of applicants and class size positively correlate with HSPHS acceptances 
+- Correlation between the number of applications and HSPHS acceptances (r=0.81)
+![Correlation between Number of applications and HSPHS acceptances](images/correlation_applicationAdmission.png)
+- Correlation between class size and HSPHS acceptances (r=0.36)/achievement scores (r=0.21) 
+![Correlation between class size and HSPHS acceptances](images/correlations_multiple.png)
+
+### Effect of School Spending:
+- As shown in the image above, school spending has a negative impact on both achievement scores (r=-0.15) and HSPHS acceptances (r=-0.34). 
+- In addition, I conducted an independent t-test to test whether or not school spending impacts HSPHS acceptances
+    - Compared the means of HSPHS acceptances between poor and rich schools. The groups were artifically divided using the median of the `spending per student` (column E).
+    - Based on the t-test results, concluded that scholl spending negatively impacts (t=-6.9,p<0.01) HSPHS acceptances
+- Although this may seem counterintuitive, when you consider the negative correlation between class size and school spending (r=-0.46), it illustrates a clearer picture.
+|[corr](images/correlation_multiple2png.png)
+- Larger schools have a disproportional per student spending when compared to that of smaller schools, and because these large schools have higher acceptances, it makes it seem as if more spending leads to lower acceptances. So, if the per student spending was proportional to the class size across all schools, the school spending may positively impact HSPHS acceptances
 
 
 ## Questions
