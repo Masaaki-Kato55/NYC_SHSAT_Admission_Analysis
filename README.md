@@ -6,7 +6,7 @@
 
 ## Description:
 - In NYC, there are 8 highly selective public high schools (HSPHS). The admission of these schools are based on scoring sufficiently on a single test known as the Specialized High Schools Admissision Test (SHSAT). 
-- The goal of this project to explore various characteristics of NYC middle schools, determine which factors impact HSPHS admissions, and propose possible interventions. 
+- The goal of this project to explore various characteristics of NYC middle school and determine which factors impact HSPHS admissions. 
 - This is a modified version of the Introduction to Data Science Capstone Project. A detailed explanation of the methodology is in the `analysis_report.pdf` file
 
 ## Dataset:
@@ -25,9 +25,6 @@ The columns represent:
 - U: School size (Number of students in the entire school)
 - V: Average student achievement on a state-wide standardized test
 - W-X: Proportion of students exceeding state-wide expectations in reading and math
-
-## Conclusion:
-
 
 ## Findings:
 - The largest factor that impacts HSPHS acceptance is how well the students perceive the school. This factor is represented by columns L-Q, which include metrics such as how much students believe that school can be trusted, supportive, and collaborative. 
@@ -62,13 +59,15 @@ The columns represent:
 - As shown in the image above, school spending has a negative impact on both achievement scores (r=-0.15) and HSPHS acceptances (r=-0.34). 
 - In addition, I conducted an independent t-test to test whether or not school spending impacts HSPHS acceptances
     - Compared the means of HSPHS acceptances between poor and rich schools. The groups were artifically divided using the median of the `spending per student` (column E).
-    - Based on the t-test results, concluded that scholl spending negatively impacts (t=-6.9,p<0.01) HSPHS acceptances
+    - Based on the t-test results, I concluded that scholl spending negatively impacts (t=-6.9,p<0.01) HSPHS acceptances
 - Although this may seem counterintuitive, when you consider the negative correlation between class size and school spending (r=-0.46), it illustrates a clearer picture.
-|[corr](images/correlation_multiple2png.png)
+![corr](images/correlation_multiple2png.png)
 - Larger schools have a disproportional per student spending when compared to that of smaller schools, and because these large schools have higher acceptances, it makes it seem as if more spending leads to lower acceptances. So, if the per student spending was proportional to the class size across all schools, the school spending may positively impact HSPHS acceptances
 
 
 ## Questions
+- Original questions given for the Capstone. Directly corresponds to the question numbers in `analysis.py` and `analysis_report.pdf` file.
+
 1.  What is the correlation between the number of applications and admissions to HSPHS?
 2.  What is a better predictor of admission to HSPHS? Raw number of applications or
 application *rate*?
