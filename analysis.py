@@ -18,7 +18,7 @@ from scipy.stats import levene
 
 
 #%% Import Data
-middleSchoolDataLabeled = pd.read_csv('middleSchoolData.csv')
+middleSchoolDataLabeled = pd.read_csv('data/middleSchoolData.csv')
 
 #%% Data Cleaning
 # row-wise removal
