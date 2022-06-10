@@ -7,11 +7,11 @@
 
 ## Findings:
 - The largest factor that impacts SPS acceptances is the number of applications.
-- Importantly, school climate factors (i.e., how well the students perceive the school) is the best predictor for Achievement test scores, but irrelevant when predicting SPS acceptances
-- This suggest the possiblity of a latent factor that is captured by the number of applications, but not by school climate factors (e.g., being surrounded by like-minded peers)
+- Interestingly, achivement test scores are irrelevant to predicting SPS acceptances
+- Futheremore, school climate factors (i.e., how well the students perceive the school) is the best predictor for Achievement test scores, but irrelevant when predicting SPS acceptances
+- This suggest the possiblity of a latent factor that is captured by the number of applications, but not by school climate factors and achievement test scores (e.g., being surrounded by like-minded peers)
 - Overall, NYC middle schools should focus on getting more students to apply
   - Nearly 10% of schools have 0 applications.
-- One surprising finding is how school spending negatively impacts SPS acceptance. This will be further explained in the Methods/Results section.
 
 ## Work
 - The code for this project can be found in `analysis.ipynb` under the main directory
@@ -38,13 +38,97 @@ The columns represent:
 
 ### Overview:
 - I will be using various regression analysis to find the most relevant predictor of SPS acceptances
-  - In addition, I will be predicting the best predictor for Achievement Test scores to
+  - In addition, I will be predicting the best predictor for Achievement Test scores. 
 ### Effect of Student Perception of School:
 - To begin, I conducted a PCA, which included all factors except for the two outcomes (HSPHS acceptances, objective achievement scores). Based on the PCA results, I chose four factors and labeled them as positive school climate, large population, improvised communities, and financial stability.
 - Then, I used a multiple regression model with these principal components as predictors and ran two models, one with the HSPHS acceptances (column D) as the outcome and another with the average student achievement scores (column V) as the outcome.
 - The results showed positive school climate as the most significant factor in prediction acceptances and objective achievement scores
 
 #### Regression Results:
+
+#### PCA and Regression
+
+#### Acceptance as outcome
+|                            |   Coefficients |
+|:---------------------------|---------------:|
+| PC1: school competence     |      0.244735  |
+| PC2: poor school climate   |      0.178071  |
+| PC3: large school size     |      0.0431566 |
+| PC3: nice school community |     -0.0632937 |
+
+#### Achievement test scores as outcome
+|                            |   Coefficients |
+|:---------------------------|---------------:|
+| PC1: school competence     |      0.183089  |
+| PC2: poor school climate   |     -0.116678  |
+| PC3: large school size     |      0.0560251 |
+| PC3: nice school community |      0.0730122 |
+
+
+
+#### Base multiple linear regression, lasso, and ridge regression 
+
+#### Acceptance as outcome
+
+|    | predictors                   |     base_Y1 |    lasso_Y1 |     Ridge_Y1 |
+|---:|:-----------------------------|------------:|------------:|-------------:|
+|  0 | applications                 |  0.867077   |  0.898577   |  0.673272    |
+|  1 | per_pupil_spending           | -0.00840665 |  0          |  0.0169503   |
+|  2 | avg_class_size               |  0.0116454  | -0          |  0.00188743  |
+|  3 | asian_percent                |  3.85297    |  0.0466969  |  0.0883992   |
+|  4 | black_percent                |  6.15378    | -0.0105372  | -0.0288477   |
+|  5 | hispanic_percent             |  5.99766    | -0          | -0.0330087   |
+|  6 | multiple_percent             |  0.607072   |  0.0248867  |  0.0235127   |
+|  7 | white_percent                |  4.27618    |  0          |  0.00616523  |
+|  8 | rigorous_instruction         | -0.043776   |  0          |  0.00164797  |
+|  9 | collaborative_teachers       |  0.0399891  |  0.00416968 |  0.0194805   |
+| 10 | supportive_environment       |  0.0205653  |  0.00130466 |  0.0308423   |
+| 11 | effective_school_leadership  | -0.0367282  | -0.0134163  | -0.0308124   |
+| 12 | strong_family_community_ties |  0.056413   |  0.035956   |  0.0311157   |
+| 13 | trust                        | -0.0291255  |  0          |  0.000410726 |
+| 14 | disability_percent           | -0.0346396  | -0.0533086  | -0.0518655   |
+| 15 | poverty_percent              | -0.115143   | -0.113402   | -0.100717    |
+| 16 | ESL_percent                  |  0.00716475 |  0          | -0.0085078   |
+| 17 | school_size                  | -0.242759   | -0.238282   | -0.0994109   |
+| 18 | student_achievement          |  0.0189644  | -0          |  0.00617394  |
+
+#### Achievement Test Scores as outcome
+
+|    | predictors                   |     base_Y2 |   lasso_Y2 |    Ridge_Y2 |
+|---:|:-----------------------------|------------:|-----------:|------------:|
+|  0 | applications                 |  0.0899308  |  0         |  0.0796401  |
+|  1 | acceptances                  |  0.0422561  |  0         |  0.00955291 |
+|  2 | per_pupil_spending           | -0.0317528  | -0         | -0.0166936  |
+|  3 | avg_class_size               | -0.0374432  | -0         | -0.0503699  |
+|  4 | asian_percent                |  1.251      |  0.040081  |  0.11313    |
+|  5 | black_percent                |  1.76868    | -0.102537  | -0.154702   |
+|  6 | hispanic_percent             |  1.80002    | -0         | -0.00403731 |
+|  7 | multiple_percent             |  0.157107   |  0         |  0.0317767  |
+|  8 | white_percent                |  1.45949    |  0.0787799 |  0.118152   |
+|  9 | rigorous_instruction         |  0.189624   |  0.0554391 |  0.124669   |
+| 10 | collaborative_teachers       | -0.119495   |  0         |  0.00754989 |
+| 11 | supportive_environment       |  0.38839    |  0.391729  |  0.368957   |
+| 12 | effective_school_leadership  | -0.0732049  |  0         | -0.0628861  |
+| 13 | strong_family_community_ties | -0.0798007  | -0         | -0.0861951  |
+| 14 | trust                        |  0.153318   |  0         |  0.112349   |
+| 15 | disability_percent           |  0.0687966  |  0         |  0.0675804  |
+| 16 | poverty_percent              | -0.00817563 | -0         | -0.0412332  |
+| 17 | ESL_percent                  |  0.028824   | -0         |  0.00138827 |
+| 18 | school_size                  | -0.150473   | -0         | -0.141262   |
+
+#### Comparing Model Performance
+
+|      |   adj_R^2 |     RMSE |
+|:-----|----------:|---------:|
+| bm1  |  0.704322 | 0.532727 |
+| pcr1 |  0.444672 | 0.741869 |
+| l1   |  0.588118 | 0.628756 |
+| r1   |  0.609127 | 0.61251  |
+| bm2  |  0.341176 | 0.795207 |
+| pcr2 |  0.245416 | 0.864781 |
+| l2   |  0.180133 | 0.887088 |
+| r2   |  0.166157 | 0.894617 |
+
 
 |                                | Regression 1 (acceptances) | Regression 2 (achievements) |
 |--------------------------------|----------------------------|-----------------------------|
@@ -54,20 +138,3 @@ The columns represent:
 | PCA4 (financial stability)     | -0.08                      | 0.09                        |
 | R^2                            | 0.45                       | 0.25                        |
 
-### Effect of School Size:
-- Number of applicants and class size positively correlate with HSPHS acceptances 
-- Correlation between the number of applications and HSPHS acceptances (r=0.81)
-![Correlation between Number of applications and HSPHS acceptances](old_code/images/correlation_applicationAdmission.png)
-- Correlation between class size and HSPHS acceptances (r=0.36)/achievement scores (r=0.21) 
-![Correlation between class size and HSPHS acceptances](old_code/images/correlations_multiple.png)
-
-### Effect of School Spending:
-- As shown in the image above, school spending has a negative impact on both achievement scores (r=-0.15) and HSPHS acceptances (r=-0.34). 
-- In addition, I conducted an independent t-test to test whether or not school spending impacts HSPHS acceptances
-    - Compared the means of HSPHS acceptances between poor and rich schools. The groups were artifically divided using the median of the `spending per student` (column E).
-    - Based on the t-test results, I concluded that scholl spending negatively impacts (t=-6.9,p<0.01) HSPHS acceptances
-- Although this may seem counterintuitive, when you consider the negative correlation between class size and school spending (r=-0.46), it illustrates a clearer picture.
-
-![corr](old_code/images/correlation_multiple2png.png)
-
-- Larger schools have a disproportional per student spending when compared to that of smaller schools, and because these large schools have higher acceptances, it makes it seem as if more spending leads to lower acceptances. So, if the per student spending was proportional to the class size across all schools, the school spending may positively impact HSPHS acceptances
