@@ -39,12 +39,8 @@ The columns represent:
 ### Overview:
 - I will be using various regression analysis to find the most relevant predictor of SPS acceptances
   - In addition, I will be predicting the best predictor for Achievement Test scores. 
-### Effect of Student Perception of School:
-- To begin, I conducted a PCA, which included all factors except for the two outcomes (HSPHS acceptances, objective achievement scores). Based on the PCA results, I chose four factors and labeled them as positive school climate, large population, improvised communities, and financial stability.
-- Then, I used a multiple regression model with these principal components as predictors and ran two models, one with the HSPHS acceptances (column D) as the outcome and another with the average student achievement scores (column V) as the outcome.
-- The results showed positive school climate as the most significant factor in prediction acceptances and objective achievement scores
 
-#### Regression Results:
+### Regression Results:
 
 #### PCA and Regression
 
