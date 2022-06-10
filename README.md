@@ -128,13 +128,3 @@ The columns represent:
 | pcr2 |  0.245416 | 0.864781 |
 | l2   |  0.180133 | 0.887088 |
 | r2   |  0.166157 | 0.894617 |
-
-
-|                                | Regression 1 (acceptances) | Regression 2 (achievements) |
-|--------------------------------|----------------------------|-----------------------------|
-| PCA1 (positive school climate) | 0.25                       | 0.20                        |
-| PCA2 (large population)        | 0.17                       | -0.10                       |
-| PCA3 (improvised communities)  | 0.04                       | 0.06                        |
-| PCA4 (financial stability)     | -0.08                      | 0.09                        |
-| R^2                            | 0.45                       | 0.25                        |
-
